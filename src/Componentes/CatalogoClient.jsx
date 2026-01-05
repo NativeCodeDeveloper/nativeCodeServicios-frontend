@@ -1,6 +1,6 @@
 "use client"
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Suspense} from 'react';
 import {useRouter, useSearchParams} from "next/navigation";
 import { toast } from 'react-hot-toast';
 import {useCarritoGlobal} from "@/ContextosGlobales/CarritoContext";
@@ -61,27 +61,25 @@ export default function CatalogoClient() {
     },[])
 
 
-    return(
-        <div className="min-h-screen bg-black text-white">
-            <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 mt-8" style={{fontFamily: 'Michroma, sans-serif', letterSpacing: '0.04em', color: '#fff'}}>Selecciona el servicio para continuar con el pago</h1>
-
-                <div className="flex flex-wrap gap-10 justify-center">
-                    {listaProductos.map(producto => {
-                        return (
-                            <div key={producto.id_producto}>
-                                <CardNativeCode titulo={producto.tituloProducto} precio={String(producto.valorProducto)} descripcion={producto.descripcionProducto}/>
-
-                                <div className='w-full flex justify-center p-5'>
-                                    <ShadcnButton funcion={()=>pagarProducto(producto)} nombre={'Pagar producto'}/>
+    return (
+        <Suspense>
+            <div className="min-h-screen bg-black text-white">
+                <div>
+                    <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 mt-8" style={{fontFamily: 'Michroma, sans-serif', letterSpacing: '0.04em', color: '#fff'}}>Selecciona el servicio para continuar con el pago</h1>
+                    <div className="flex flex-wrap gap-10 justify-center">
+                        {listaProductos.map(producto => {
+                            return (
+                                <div key={producto.id_producto}>
+                                    <CardNativeCode titulo={producto.tituloProducto} precio={String(producto.valorProducto)} descripcion={producto.descripcionProducto}/>
+                                    <div className='w-full flex justify-center p-5'>
+                                        <ShadcnButton funcion={()=>pagarProducto(producto)} nombre={'Pagar producto'}/>
+                                    </div>
                                 </div>
-                            </div>
-
-                        )
-                    })}
-
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Suspense>
     )
 }
