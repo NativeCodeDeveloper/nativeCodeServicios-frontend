@@ -1,6 +1,14 @@
 "use client";
 
 export default function CardNativeCode({ titulo, descripcion, precio }) {
+    const precioCLP = precio
+      ? new Intl.NumberFormat("es-CL", {
+          style: "currency",
+          currency: "CLP",
+          maximumFractionDigits: 0,
+        }).format(precio)
+      : null;
+
     // Convertimos el string en array por saltos de línea
     const items = (descripcion ? descripcion.split("\n") : []).filter(Boolean);
 
@@ -46,7 +54,7 @@ export default function CardNativeCode({ titulo, descripcion, precio }) {
                 text-slate-950
                 shadow-lg shadow-cyan-500/20"
               >
-                ${precio}
+                {precioCLP}
               </span>
               <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
                 Pago único
