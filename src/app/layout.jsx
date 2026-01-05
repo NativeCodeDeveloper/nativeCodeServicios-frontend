@@ -12,8 +12,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata = {
-    title: "RunaJoyas | Joyería moderna con piezas únicas",
-    description: "Joyas artesanales y modernas en Chile.",
+    title: "NativeCode | Servicios ",
+    description: "Desarrollo de Aplicaciones",
 };
 
 export default function RootLayout({ children }) {
