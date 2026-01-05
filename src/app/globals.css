@@ -1,0 +1,414 @@
+@import "tailwindcss";
+
+:root {
+    --background: #000000;
+    --foreground: #ededed;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+}
+
+
+body {
+    background: #000 !important;
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    background: #000 !important;
+}
+
+/* Optimización de rendimiento */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimización para scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejorar rendimiento de scroll */
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Animación de gradiente para botones */
+@keyframes gradient-xy {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Animación lenta de rotación para el botón flotante */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animaciones para RadialSocials */
+@keyframes rotate-0 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes counter-rotate-0 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes counter-rotate-1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+}
+
+/* Delays para animaciones de sparkles */
+.delay-75 {
+    animation-delay: 75ms;
+}
+
+.delay-150 {
+    animation-delay: 150ms;
+}
+
+.titulosResponsive{
+    @apply text-5xl font-bold mb-4 p-8 text-justify;
+}
+
+
+.subtitulosResponsive{
+    @apply   md:text-3xl font-bold mb-4 p-8 text-center;
+}
+
+.textoResponsive{
+    @apply md:text-2xl font-bold text-justify ;
+}
+
+.textoResponsive2{
+    @apply text-xs md:text-2xl font-bold text-justify ;
+}
+
+.estiloPlanes{
+    @apply
+    border
+    rounded-2xl
+    p-8
+    bg-blue-950
+}
+
+.estiloPlanesCayan{
+    @apply
+    border
+    rounded-2xl
+    p-8
+    bg-cyan-950
+}
+
+
+.estiloPlanesFuccia{
+    @apply
+    border
+    rounded-2xl
+    p-8
+    bg-fuchsia-950
+}
+
+.textoNormalResponsive{
+    @apply
+    text-lg
+
+
+}
+
+
+.tituloResponsive{
+    @apply
+    text-4xl
+    font-bold
+}
+
+.textoNormalResposivo{
+    @apply
+    text-sm
+    md:text-3xl
+    justify-center
+    p-2
+
+}
+
+.textoBoldResponsivo{
+    @apply
+    text-sm
+    md:text-3xl
+    font-bold
+    my-4
+    justify-center
+    p-2
+
+}
+
+.inputMorado{
+    @apply
+    bg-black
+    border-2 border-purple-500 rounded-2xl
+    w-80 md:w-120
+    h-8 md:h-12
+    text-sm md:text-2xl
+    p-4
+    justify-center
+}
+
+
+
+.textAreaMorado{
+    @apply
+    bg-black
+    border-2 border-purple-500 rounded-2xl
+    w-80 md:w-120
+    h-30 md:h-60
+    text-sm md:text-2xl
+    justify-center
+
+}
+
+.inputMoradostep{
+    @apply
+    bg-black
+    border-2 border-purple-500 rounded-2xl
+    w-80
+    h-8 md:h-12
+    text-sm md:text-2xl
+
+    justify-center
+
+}
+
+/* Botón flotante con efectos */
+.button-float {
+    --black-700: hsla(250 60% 20% / 0.9);
+    --border_radius: 9999px;
+    --transtion: 0.3s ease-in-out;
+    --offset: 2px;
+
+    cursor: pointer;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    transform-origin: center;
+
+    padding: 1rem 2rem;
+    background-color: transparent;
+
+    border: none;
+    border-radius: var(--border_radius);
+    transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+
+    transition: transform var(--transtion);
+    box-shadow: 0 8px 24px rgba(82, 22, 224, 0.453);
+}
+
+.button-float::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, hsl(260, 80%, 45%) 0%, hsl(280, 85%, 55%) 100%);
+
+    border-radius: var(--border_radius);
+    box-shadow: inset 0 1px 2px hsl(0, 0%, 100% / 0.3),
+    inset 0 -2px 4px hsl(0, 0%, 0% / 0.2),
+    0px 6px 16px -4px hsla(260 80% 45% / calc(0.4 + var(--active, 0) * 0.3)),
+    0 0 0 calc(var(--active, 0) * 0.5rem) hsl(260 90% 65% / 0.6);
+
+    transition: all var(--transtion);
+    z-index: 0;
+}
+
+.button-float::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    background-color: hsla(260 90% 70% / 0.85);
+    background-image: radial-gradient(
+            at 51% 89%,
+            rgb(82, 27, 155) 0px,
+            transparent 50%
+    ),
+    radial-gradient(at 100% 100%, rgb(155, 83, 191) 0px, transparent 60%),
+    radial-gradient(at 22% 91%, rgb(113, 44, 183) 0px, transparent 60%);
+    background-position: top;
+
+    opacity: var(--active, 0);
+    border-radius: var(--border_radius);
+    transition: opacity var(--transtion);
+    z-index: 2;
+}
+
+.button-float:is(:hover, :focus-visible) {
+    --active: 1;
+}
+
+.button-float:active {
+    transform: scale(1);
+}
+
+.button-float .dots_border {
+    --size_border: calc(100% + 2px);
+
+    overflow: hidden;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--size_border);
+    height: var(--size_border);
+    background-color: transparent;
+
+    border-radius: var(--border_radius);
+    z-index: -10;
+}
+
+.button-float .dots_border::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: left;
+
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(90deg, hsl(260, 90%, 70%), hsl(280, 95%, 80%));
+
+    mask: linear-gradient(transparent 0%, white 120%);
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.button-float .logo-float {
+    position: relative;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.button-float .sparkle {
+    position: relative;
+    z-index: 10;
+
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.button-float .sparkle .path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+
+    transform-origin: center;
+
+    color: hsl(0, 0%, 100%);
+}
+
+.button-float:is(:hover, :focus) .sparkle .path {
+    animation: path 1.5s linear 0.5s infinite;
+}
+
+.button-float .sparkle .path:nth-child(1) {
+    --scale_path_1: 1.2;
+}
+.button-float .sparkle .path:nth-child(2) {
+    --scale_path_2: 1.2;
+}
+.button-float .sparkle .path:nth-child(3) {
+    --scale_path_3: 1.2;
+}
+
+@keyframes path {
+    0%,
+    34%,
+    71%,
+    100% {
+        transform: scale(1);
+    }
+    17% {
+        transform: scale(var(--scale_path_1, 1));
+    }
+    49% {
+        transform: scale(var(--scale_path_2, 1));
+    }
+    83% {
+        transform: scale(var(--scale_path_3, 1));
+    }
+}
+
+.button-float .text_button {
+    position: relative;
+    z-index: 10;
+
+    background-image: linear-gradient(
+            90deg,
+            hsla(0 0% 100% / 1) 0%,
+            hsla(0 0% 100% / var(--active, 0)) 120%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: transparent;
+}
+
