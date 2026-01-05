@@ -219,7 +219,7 @@ totalPagado
 
                 <div className="mb-8">
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
-                        Completa tus datos para continuar con la compra
+                        Completa los siguientes datos para la Facturacion del Servicio
                     </h1>
                     <p className="mt-2 text-sm text-gray-400">
                         Tus datos se usarán solo para procesar el pedido y generar el comprobante.
@@ -292,7 +292,7 @@ totalPagado
                                 </label>
 
                                 <label className="block">
-                                    <span className="text-sm font-medium text-gray-400">Direccion Despacho</span>
+                                    <span className="text-sm font-medium text-gray-400">Direccion Facturación</span>
                                     <input
                                         type="text"
                                         value={direccion_despacho}
@@ -333,7 +333,7 @@ totalPagado
                                         value={comentarios}
                                         onChange={(e) => setComentarios(e.target.value)}
                                         className="p-2 mt-1 block w-full rounded-lg bg-neutral-800 border-white/10 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 text-white placeholder:text-gray-500 py-2"
-                                        placeholder="Ej: Referencia para la entrega casa interior color azul"
+                                        placeholder="Ej: Necesito boltea, necesito factura , etc.."
                                     />
                                 </label>
                             </div>
